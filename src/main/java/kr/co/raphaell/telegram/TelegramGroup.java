@@ -18,6 +18,12 @@ public class TelegramGroup {
 	public static void loadGroup() {
 		try {
 
+
+
+
+
+
+
 			groupIdMap = TelegramBotService.getInstance().getGroupsMap(); 
 		} catch (Exception e) {
 			e.printStackTrace();
