@@ -1,15 +1,13 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
 
-sourceCompatibility = 1.5
+sourceCompatibility=1.5
 version = ''
+
 jar {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
+    from { configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
     }
-    
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 repositories {
@@ -17,19 +15,7 @@ repositories {
 }
 
 dependencies {
-	compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.6.v20170531'
-	compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.6.v20170531'
-	compile group: 'me.shib.java.lib', name: 'telegram-bot-java', version: '1.3.7'
-}
-
-test {
-    systemProperties 'property': 'value'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
+    compile group : 'org.eclipse.jetty', name:'jetty-server', version:'9.4.6.v20170531'
+    compile group : 'org.eclipse.jetty', name:'jetty-servlet', version:'9.4.6.v20170531'
+    compile group : 'me.shib.java.lib', name:'telegram-bot-java', version: '1.3.7'
 }

@@ -11,10 +11,10 @@ public class TelegramServer {
 		TelegramBotService telegramBotService = null;
 		
 		telegramBotService = TelegramBotService.getInstance();
-		telegramBotService.setBotToken(args[0]);
+		telegramBotService.setBotToken(null);
 		TelegramGroup.init();
 		
-		Server server = new Server(Integer.parseInt(args[1]));
+		Server server = new Server(Integer.parseInt("8080"));
 
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		context.setContextPath("/");
